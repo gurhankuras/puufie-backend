@@ -1,0 +1,275 @@
+databaseChangeLog:
+- changeSet:
+    id: 1761889416286-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: app_userPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            defaultValueBoolean: true
+            name: is_active
+            type: TINYINT
+        - column:
+            constraints:
+              nullable: false
+            name: password
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: username
+            type: VARCHAR(150)
+        tableName: app_user
+- changeSet:
+    id: 1761889416286-2
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: permissionPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: code
+            type: VARCHAR(100)
+        - column:
+            name: description
+            type: VARCHAR(255)
+        tableName: permission
+- changeSet:
+    id: 1761889416286-3
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: profilePK
+            name: id
+            type: BIGINT
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(100)
+        tableName: profile
+- changeSet:
+    id: 1761889416286-4
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: profile_rolePK
+            name: profile_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: profile_rolePK
+            name: role_id
+            type: BIGINT
+        tableName: profile_role
+- changeSet:
+    id: 1761889416286-5
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: rolePK
+            name: id
+            type: BIGINT
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(100)
+        tableName: role
+- changeSet:
+    id: 1761889416286-6
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: role_permissionPK
+            name: role_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: role_permissionPK
+            name: permission_id
+            type: BIGINT
+        tableName: role_permission
+- changeSet:
+    id: 1761889416286-7
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: user_profilePK
+            name: user_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: user_profilePK
+            name: profile_id
+            type: BIGINT
+        tableName: user_profile
+- changeSet:
+    id: 1761889416286-8
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: username
+        constraintName: UC_APP_USERUSERNAME_COL
+        tableName: app_user
+- changeSet:
+    id: 1761889416286-9
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: code
+        constraintName: UC_PERMISSIONCODE_COL
+        tableName: permission
+- changeSet:
+    id: 1761889416286-10
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: name
+        constraintName: UC_PROFILENAME_COL
+        tableName: profile
+- changeSet:
+    id: 1761889416286-11
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: name
+        constraintName: UC_ROLENAME_COL
+        tableName: role
+- changeSet:
+    id: 1761889416286-12
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: role_id
+        baseTableName: profile_role
+        constraintName: FK9sx4d1mv1bx7ycdst08d1grmh
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: role
+        validate: true
+- changeSet:
+    id: 1761889416286-13
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: role_id
+        baseTableName: role_permission
+        constraintName: FKa6jx8n8xkesmjmv6jqug6bg68
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: role
+        validate: true
+- changeSet:
+    id: 1761889416286-14
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: permission_id
+        baseTableName: role_permission
+        constraintName: FKf8yllw1ecvwqy3ehyxawqa1qp
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: permission
+        validate: true
+- changeSet:
+    id: 1761889416286-15
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_profile
+        constraintName: FKpdmw33px6fmevqhcy2lpstu4w
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+- changeSet:
+    id: 1761889416286-16
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: profile_id
+        baseTableName: profile_role
+        constraintName: FKq1xpg97gmomklc1hrdgrg19k7
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: profile
+        validate: true
+- changeSet:
+    id: 1761889416286-17
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: profile_id
+        baseTableName: user_profile
+        constraintName: FKqfbftbxicceqbmvj87g9be2qn
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: profile
+        validate: true
+

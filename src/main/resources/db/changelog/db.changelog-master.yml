@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/20251031_054329_changelog.yml
+  - include:
+      file: db/changelog/20251031_180746_changelog.yml
+  - include:
+      file: db/changelog/20251119_104902_changelog.yml
+  - include:
+      file: db/changelog/20251119_105641_changelog.yml
+  - include:
+      file: db/changelog/20251119_112536_changelog.yml
+  - include:
+      file: db/changelog/20251119_124247_changelog.yml
+  - include:
+      file: db/changelog/20251119_201239_changelog.yml
+  - include:
+      file: db/changelog/20251119_201942_changelog.yml

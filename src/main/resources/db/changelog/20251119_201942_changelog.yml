@@ -1,0 +1,10 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763583589842-1
+    author: gurhan (generated)
+    changes:
+    - modifyDataType:
+        columnName: created_at
+        newDataType: datetime(6)
+        tableName: app_version_config
+

@@ -1,0 +1,18 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763551543147-1
+    author: gurhan (generated)
+    changes:
+    - modifyDataType:
+        columnName: created_at
+        newDataType: datetime(6)
+        tableName: otp_code
+- changeSet:
+    id: 1763551543147-2
+    author: gurhan (generated)
+    changes:
+    - modifyDataType:
+        columnName: expires_at
+        newDataType: datetime(6)
+        tableName: otp_code
+

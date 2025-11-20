@@ -1,0 +1,62 @@
+databaseChangeLog:
+- changeSet:
+    id: 1761934073836-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: user_push_preferencePK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: daily_cap
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: push_enabled
+            type: BIT
+        - column:
+            name: quiet_hours_end
+            type: time
+        - column:
+            name: quiet_hours_start
+            type: time
+        - column:
+            name: timezone
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: BIGINT
+        tableName: user_push_preference
+- changeSet:
+    id: 1761934073836-2
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: user_id
+        constraintName: UC_USER_PUSH_PREFERENCEUSER_ID_COL
+        tableName: user_push_preference
+- changeSet:
+    id: 1761934073836-3
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_push_preference
+        constraintName: FK49owow3rhmkkktmrdbdgid0u7
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+

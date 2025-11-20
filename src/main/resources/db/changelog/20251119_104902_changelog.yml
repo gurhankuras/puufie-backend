@@ -1,0 +1,49 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763549349498-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: otp_codePK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: code
+            type: VARCHAR(255)
+
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: BIGINT
+        tableName: otp_code
+- changeSet:
+    id: 1763549349498-2
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: user_id
+        constraintName: UC_OTP_CODEUSER_ID_COL
+        tableName: otp_code
+- changeSet:
+    id: 1763549349498-3
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: otp_code
+        constraintName: FK545jlyh7nbony4le5k5v1dai2
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+

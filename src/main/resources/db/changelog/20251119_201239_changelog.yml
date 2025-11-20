@@ -1,0 +1,47 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763583167234-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: app_version_configPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: BIT
+        - column:
+            constraints:
+              nullable: false
+            name: latest_version
+            type: VARCHAR(10)
+        - column:
+            constraints:
+              nullable: false
+            name: min_version
+            type: VARCHAR(10)
+        - column:
+            constraints:
+              nullable: false
+            name: platform
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: store_url
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime(6)
+        tableName: app_version_config
+

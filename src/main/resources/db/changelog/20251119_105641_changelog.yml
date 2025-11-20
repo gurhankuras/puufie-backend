@@ -1,0 +1,38 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763549807920-1
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: time
+        tableName: otp_code
+- changeSet:
+    id: 1763549807920-2
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: expires_at
+            type: time
+        tableName: otp_code
+- changeSet:
+    id: 1763549807920-3
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: subject
+            type: VARCHAR(50)
+        tableName: otp_code
+

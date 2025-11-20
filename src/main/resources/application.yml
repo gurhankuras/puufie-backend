@@ -1,0 +1,47 @@
+# application.yml
+server:
+  port: 8080
+
+spring:
+  application:
+    name: learnspring
+  h2:
+    console:
+      enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/myapp
+    username: myapp
+    password: myapp123
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/db.changelog-master.yml
+  messages:
+    basename: messages
+    default-locale: en
+    # Cache'i devre dışı bırakıp hızlı test etme (sadece geliştirme için önerilir)
+    cache-duration: 0
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+logging:
+  level:
+    root: TRACE
+    liquibase: DEBUG
+    org.springframework.boot.autoconfigure.liquibase: DEBUG
+jwt:
+  secret: ZmFrZV9mYWtlX2Zha2VfZmFrZV9mYWtlX2Zha2VfZmFrZV9mYWtlX2Zha2U=
+  expiration: 60

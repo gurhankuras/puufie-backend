@@ -1,0 +1,46 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763556174173-1
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: attempt_count
+            type: INT
+        tableName: otp_code
+- changeSet:
+    id: 1763556174173-2
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: last_attempt_at
+            type: datetime(6)
+        tableName: otp_code
+- changeSet:
+    id: 1763556174173-3
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: status
+            type: VARCHAR(50)
+        tableName: otp_code
+- changeSet:
+    id: 1763556174173-4
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: used_at
+            type: datetime(6)
+        tableName: otp_code
+
