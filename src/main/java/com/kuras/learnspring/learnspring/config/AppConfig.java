@@ -1,6 +1,6 @@
 package com.kuras.learnspring.learnspring.config;
 
-import com.kuras.learnspring.learnspring.repository.UserRepository;
+import com.kuras.learnspring.learnspring.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
