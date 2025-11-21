@@ -1,6 +1,6 @@
 package com.kuras.learnspring.learnspring.security;
 
-import com.kuras.learnspring.learnspring.error.ApiAccessDeniedHandler;
+import com.kuras.learnspring.learnspring.common.error.ApiAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
