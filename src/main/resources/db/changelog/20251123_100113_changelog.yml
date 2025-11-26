@@ -1,0 +1,72 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763892081017-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: password_policyPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: max_length
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: min_length
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: require_lower_case
+            type: BIT
+        - column:
+            constraints:
+              nullable: false
+            name: require_number
+            type: BIT
+        - column:
+            constraints:
+              nullable: false
+            name: require_special
+            type: BIT
+        - column:
+            constraints:
+              nullable: false
+            name: require_upper_case
+            type: BIT
+        - column:
+            constraints:
+              nullable: false
+            name: valid_from
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: valid_to
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: version
+            type: INT
+        tableName: password_policy
+

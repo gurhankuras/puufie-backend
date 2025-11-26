@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251125_092734_user_security_migration_changelog
+      author: gurhan
+      changes:
+        - sql:
+            splitStatements: true
+            stripComments: true
+            sql: |
+              INSERT INTO user_security (
+                  user_id,
+                  password_hash,
+                  password_policy_version_at_set,
+                  password_last_changed_at,
+                  must_change_password,
+                  failed_login_attempts,
+                  locked_until,
+                  created_at,
+                  updated_at
+              )
+              SELECT
+                  u.id                       AS user_id,
+                  u.password                 AS password_hash,
+                  1                          AS password_policy_version_at_set,
+                  NOW()                      AS password_last_changed_at,
+                  FALSE                      AS must_change_password,
+                  0                          AS failed_login_attempts,
+                  NULL                       AS locked_until,
+                  NOW()                      AS created_at,
+                  NOW()                      AS updated_at
+              FROM app_user u
+              WHERE NOT EXISTS (
+                  SELECT 1
+                  FROM user_security s
+                  WHERE s.user_id = u.id
+              );

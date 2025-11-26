@@ -1,7 +1,6 @@
 package com.kuras.learnspring.learnspring.auth.entity;
 
 
-import com.kuras.learnspring.learnspring.access_control.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 

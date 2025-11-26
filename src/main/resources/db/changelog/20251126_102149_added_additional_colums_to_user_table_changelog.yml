@@ -1,0 +1,73 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764152518588-1
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: country_code
+            type: VARCHAR(4)
+        tableName: app_user
+- changeSet:
+    id: 1764152518588-2
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: email
+            type: VARCHAR(254)
+        tableName: app_user
+- changeSet:
+    id: 1764152518588-3
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: first_name
+            type: VARCHAR(100)
+        tableName: app_user
+- changeSet:
+    id: 1764152518588-4
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: last_name
+            type: VARCHAR(100)
+        tableName: app_user
+- changeSet:
+    id: 1764152518588-5
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: phone_number
+            type: VARCHAR(15)
+        tableName: app_user
+- changeSet:
+    id: 1764152518588-6
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: user_id
+        constraintName: UC_USER_SECURITYUSER_ID_COL
+        tableName: user_security
+- changeSet:
+    id: 1764152518588-7
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_security
+        constraintName: FK4dle6ysub539fq6lybj3rvjl2
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+

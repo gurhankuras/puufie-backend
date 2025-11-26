@@ -1,0 +1,70 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764056290759-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: password_historyPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: password_hash
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: policy_version
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: BIGINT
+        tableName: password_history
+- changeSet:
+    id: 1764056290759-2
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: password_expiry_days
+            type: INT
+        tableName: password_policy
+- changeSet:
+    id: 1764056290759-3
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: password_history_limit
+            type: INT
+        tableName: password_policy
+- changeSet:
+    id: 1764056290759-4
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: password_history
+        constraintName: FK1npuqafsx3vp2bte5t2n0nbe8
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+

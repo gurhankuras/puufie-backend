@@ -1,6 +1,6 @@
 package com.kuras.learnspring.learnspring.push_notification.entity;
 
-import com.kuras.learnspring.learnspring.access_control.entity.User;
+import com.kuras.learnspring.learnspring.auth.entity.User;
 import com.kuras.learnspring.learnspring.common.converters.ZoneIdAttributeConverter;
 import jakarta.persistence.*;
 import lombok.*;

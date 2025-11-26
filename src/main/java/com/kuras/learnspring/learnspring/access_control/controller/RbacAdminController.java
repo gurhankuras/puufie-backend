@@ -7,7 +7,7 @@ import com.kuras.learnspring.learnspring.access_control.dto.CreateRoleRequest;
 import com.kuras.learnspring.learnspring.access_control.entity.Permission;
 import com.kuras.learnspring.learnspring.access_control.entity.Profile;
 import com.kuras.learnspring.learnspring.access_control.entity.Role;
-import com.kuras.learnspring.learnspring.access_control.entity.User;
+import com.kuras.learnspring.learnspring.auth.entity.User;
 import com.kuras.learnspring.learnspring.auth.repository.UserRepository;
 import com.kuras.learnspring.learnspring.access_control.service.RbacService;
 import jakarta.validation.Valid;

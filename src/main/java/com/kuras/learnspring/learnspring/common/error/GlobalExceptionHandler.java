@@ -1,16 +1,19 @@
 package com.kuras.learnspring.learnspring.common.error;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import java.net.BindException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -45,6 +48,39 @@ public class GlobalExceptionHandler {
         return Optional.ofNullable(MDC.get("traceId")).orElse(UUID.randomUUID().toString());
     }
 
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiError> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex, HttpServletRequest req) {
+
+        var fieldErrors = ex.getBindingResult().getFieldErrors().stream()
+                .map(fe -> Map.of(
+                        "field", fe.getField(),
+                        "rejectedValue", fe.getRejectedValue(),
+                        "message", fe.getDefaultMessage()))
+                .toList();
+
+        var wrapped = new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("errors", fieldErrors));
+        var body = ApiError.of(wrapped, ErrorType.VALIDATION, req.getRequestURI(), traceId(), messageService);
+        return ResponseEntity.badRequest().body(body);
+    }
+
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ApiError> handleConstraintViolation(
+            ConstraintViolationException ex, HttpServletRequest req) {
+
+        var violations = ex.getConstraintViolations().stream()
+                .map(v -> Map.of(
+                        "param", v.getPropertyPath().toString(), // methodName.argName
+                        "invalidValue", v.getInvalidValue(),
+                        "message", v.getMessage()))
+                .toList();
+
+        var wrapped = new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("errors", violations));
+        var body = ApiError.of(wrapped, ErrorType.VALIDATION, req.getRequestURI(), traceId(), messageService);
+        return ResponseEntity.badRequest().body(body);
+    }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiError> handleNoHandlerFound(NoHandlerFoundException ex, HttpServletRequest req) {

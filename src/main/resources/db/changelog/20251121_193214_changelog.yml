@@ -1,0 +1,53 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763753541655-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: localization_entryPK
+            name: id
+            type: BIGINT
+        - column:
+            name: key
+            type: VARCHAR(255)
+        - column:
+            name: locale
+            type: VARCHAR(255)
+        - column:
+            name: updated_at
+            type: datetime(6)
+        - column:
+            name: value
+            type: VARCHAR(255)
+        - column:
+            name: version
+            type: INT
+        tableName: localization_entry
+- changeSet:
+    id: 1763753541655-2
+    author: gurhan (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: locale, key, version
+        constraintName: uq_localization_entry_locale_key_version
+        tableName: localization_entry
+- changeSet:
+    id: 1763753541655-3
+    author: gurhan (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: locale
+        - column:
+            name: version
+        indexName: idx_localization_entry_locale_version
+        tableName: localization_entry
+

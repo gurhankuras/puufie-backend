@@ -29,6 +29,7 @@ spring:
     enabled: false
     change-log: classpath:db/changelog/db.changelog-master.yml
   messages:
+    encoding: UTF-8
     basename: messages
     default-locale: en
     # Cache'i devre dışı bırakıp hızlı test etme (sadece geliştirme için önerilir)

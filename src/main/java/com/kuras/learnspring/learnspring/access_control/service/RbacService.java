@@ -9,7 +9,7 @@ import com.kuras.learnspring.learnspring.access_control.dto.CreateRoleRequest;
 import com.kuras.learnspring.learnspring.access_control.entity.Permission;
 import com.kuras.learnspring.learnspring.access_control.entity.Profile;
 import com.kuras.learnspring.learnspring.access_control.entity.Role;
-import com.kuras.learnspring.learnspring.access_control.entity.User;
+import com.kuras.learnspring.learnspring.auth.entity.User;
 import com.kuras.learnspring.learnspring.access_control.repository.PermissionRepository;
 import com.kuras.learnspring.learnspring.access_control.repository.ProfileRepository;
 import com.kuras.learnspring.learnspring.access_control.repository.RoleRepository;
@@ -53,14 +53,13 @@ public class RbacService {
         return profileRepo.save(p);
     }
 
-
     // ---- assign ----
     @Transactional
     public Role assignPermissionsToRole(Long roleId, AssignIdsRequest req) {
         var role = roleRepo.findById(roleId).orElseThrow();
         var perms = new HashSet<>(permissionRepo.findAllById(req.ids()));
         role.setPermissions(perms);
-        return roleRepo.save(role);
+        return role;
     }
 
     @Transactional
@@ -68,7 +67,7 @@ public class RbacService {
         var profile = profileRepo.findById(profileId).orElseThrow();
         var roles = new HashSet<>(roleRepo.findAllById(req.ids()));
         profile.setRoles(roles);
-        return profileRepo.save(profile);
+        return profile;
     }
 
     @Transactional
@@ -76,6 +75,6 @@ public class RbacService {
         var user = userRepo.findById(userId).orElseThrow();
         var profiles = new HashSet<>(profileRepo.findAllById(req.ids()));
         user.setProfiles(profiles);
-        return userRepo.save(user);
+        return user;
     }
 }

@@ -11,10 +11,25 @@ public record ApiError(
         ErrorType type,
         String code,
         String message,
-        Map<String, Object> details
+        Map<String, ?> details
 ) {
     public static ApiError of(ApiException ex, ErrorType type, String path, String traceId, MessageService messageService) {
-        String localizedMessage = messageService.getMessage(ex.code(), ex.details()); // Details içindeki argümanlar kullanılabilir
+        Map<String, ?> details = ex.details();
+        Object[] args = null;
+
+        if (details != null && details.containsKey("args")) {
+            Object val = details.get("args");
+            if (val instanceof Object[]) {
+                args = (Object[]) val;
+            } else {
+                args = new Object[]{ val };
+            }
+        } else {
+            args = new Object[]{}; // boş args
+        }
+
+        String localizedMessage = messageService.getErrorMessage(ex.code(), args); // Details içindeki argümanlar kullanılabilir
+
         return new ApiError(
                 Instant.now(),
                 ex.status().value(),

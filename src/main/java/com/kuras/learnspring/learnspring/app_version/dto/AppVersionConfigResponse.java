@@ -10,7 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 public class AppVersionConfigResponse {
     private String platform;
-
     private boolean optionalUpdate;
     private boolean forceUpdate;
 

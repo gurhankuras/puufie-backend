@@ -15,3 +15,19 @@ databaseChangeLog:
       file: db/changelog/20251119_201239_changelog.yml
   - include:
       file: db/changelog/20251119_201942_changelog.yml
+  - include:
+      file: db/changelog/20251121_193214_changelog.yml
+  - include:
+      file: db/changelog/20251122_214728_changelog.yml
+  - include:
+      file: db/changelog/20251123_100113_changelog.yml
+  - include:
+      file: db/changelog/20251125_073803_changelog.yml
+  - include:
+      file: db/changelog/20251125_082634_changelog.yml
+  - include:
+      file: db/changelog/20251125_092903_password_hash_removed_on_user_table_changelog.yml
+  - include:
+     file:  db/changelog/20251125_100430_add_maxFailCount_and_lockoutDuration_on_password_policy_changelog.yml
+  - include:
+     file: db/changelog/20251126_102149_added_additional_colums_to_user_table_changelog.yml

@@ -1,7 +1,7 @@
 package com.kuras.learnspring.learnspring.app_version.service;
 
 import com.kuras.learnspring.learnspring.app_version.dto.AppVersionConfigResponse;
-import com.kuras.learnspring.learnspring.app_version.dto.SemVersion;
+import com.kuras.learnspring.learnspring.app_version.model.SemVersion;
 import com.kuras.learnspring.learnspring.common.error.BusinessException;
 import com.kuras.learnspring.learnspring.common.error.ErrorCode;
 import com.kuras.learnspring.learnspring.app_version.repository.AppVersionConfigRepository;

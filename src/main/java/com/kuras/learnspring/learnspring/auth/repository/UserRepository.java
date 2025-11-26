@@ -1,6 +1,8 @@
 package com.kuras.learnspring.learnspring.auth.repository;
 
-import com.kuras.learnspring.learnspring.access_control.entity.User;
+import com.kuras.learnspring.learnspring.auth.entity.User;
+import com.kuras.learnspring.learnspring.common.error.BusinessException;
+import com.kuras.learnspring.learnspring.common.error.ErrorCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +14,10 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByUsername(String username);
     Optional<User> findByUsername(String username);
+
+    default User findByUsernameOrThrow(String username) {
+        return findByUsername(username).orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+    }
 
     @Query("""
          select distinct u from User u

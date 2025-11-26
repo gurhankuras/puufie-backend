@@ -1,4 +1,4 @@
-package com.kuras.learnspring.learnspring.app_version.dto;
+package com.kuras.learnspring.learnspring.app_version.model;
 
 public final class SemVersion implements Comparable<SemVersion> {
 

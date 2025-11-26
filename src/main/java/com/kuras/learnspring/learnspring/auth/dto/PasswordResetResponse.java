@@ -9,8 +9,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OtpValidationRequest {
-    private String username;
-    private String subject;
-    private String code;
+public class PasswordResetResponse {
+    private String token;
+
 }

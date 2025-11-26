@@ -1,0 +1,53 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764059201769-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: user_securityPK
+            name: user_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: failed_login_attempts
+            type: INT
+        - column:
+            name: locked_until
+            type: datetime(6)
+        - column:
+            defaultValueBoolean: false
+            name: must_change_password
+            type: TINYINT
+        - column:
+            constraints:
+              nullable: false
+            name: password_hash
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: password_last_changed_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: password_policy_version_at_set
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime(6)
+        tableName: user_security
+
