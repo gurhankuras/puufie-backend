@@ -31,3 +31,11 @@ databaseChangeLog:
      file:  db/changelog/20251125_100430_add_maxFailCount_and_lockoutDuration_on_password_policy_changelog.yml
   - include:
      file: db/changelog/20251126_102149_added_additional_colums_to_user_table_changelog.yml
+  - include:
+      file: db/changelog/20251128_124427_device_table_added_changelog.yml
+  - include:
+      file: db/changelog/20251128_140006_changelog_user_notification_table_added.yml
+  - include:
+      file: db/changelog/20251128_161701_created_notification_delivery_table_changelog.yml
+  - include:
+      file: db/changelog/20251128_180302_added_is_active_field_to_device_table_changelog.yml

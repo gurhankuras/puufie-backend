@@ -98,7 +98,7 @@ public class AuthService {
                 // burada artık transaction commit olmuş durumda
                 throw new BusinessException(ErrorCode.YOUR_ACCOUNT_LOCKED_OUT, policy.getLockoutDurationMinutes());
             }
-            throw ex;
+            throw new BusinessException(ErrorCode.INVALID_CREDENTIALS);
         }
     }
 

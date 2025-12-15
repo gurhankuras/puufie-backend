@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764352991716-1
+    author: gurhan (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            defaultValueBoolean: true
+            name: is_active
+            type: TINYINT
+        tableName: device
+

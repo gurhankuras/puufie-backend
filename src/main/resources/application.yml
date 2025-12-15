@@ -1,6 +1,8 @@
 # application.yml
 server:
   port: 8080
+firebase:
+  service-account-path: src/main/resources/firebase-service-account.json
 
 spring:
   application:

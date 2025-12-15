@@ -1,0 +1,76 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764338414749-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: user_notificationPK
+            name: id
+            type: BIGINT
+        - column:
+            name: body
+            type: TEXT
+        - column:
+            name: category
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime(6)
+        - column:
+            name: data
+            type: JSON
+        - column:
+            name: deleted_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: notification_type
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: is_read
+            type: BIT
+        - column:
+            name: read_at
+            type: datetime(6)
+        - column:
+            name: target
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: title
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: datetime(6)
+        - column:
+            name: user_id
+            type: BIGINT
+        tableName: user_notification
+- changeSet:
+    id: 1764338414749-2
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_notification
+        constraintName: FK62vfdtp3uff720hr41o0iqipb
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+

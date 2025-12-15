@@ -1,0 +1,82 @@
+databaseChangeLog:
+- changeSet:
+    id: 1764333875518-1
+    author: gurhan (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: devicePK
+            name: id
+            type: BIGINT
+        - column:
+            name: app_version
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: datetime(6)
+        - column:
+            constraints:
+              nullable: false
+            name: device_token
+            type: VARCHAR(255)
+        - column:
+            name: last_seen_at
+            type: datetime(6)
+        - column:
+            name: os_version
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: platform
+            type: VARCHAR(20)
+        - column:
+            name: updated_at
+            type: datetime(6)
+        - column:
+            name: user_id
+            type: BIGINT
+        tableName: device
+- changeSet:
+    id: 1764333875518-2
+    author: gurhan (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: device_token
+        indexName: idx_device_token
+        tableName: device
+- changeSet:
+    id: 1764333875518-3
+    author: gurhan (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: user_id
+        indexName: idx_device_user_id
+        tableName: device
+- changeSet:
+    id: 1764333875518-4
+    author: gurhan (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: device
+        constraintName: FKenbj08s27hiccl7if7cotutpm
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: app_user
+        validate: true
+
